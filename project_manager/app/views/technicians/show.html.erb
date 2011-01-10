@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @technician.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @technician.last_name %>
+</p>
+
+<p>
+  <b>Middle initial:</b>
+  <%= @technician.middle_initial %>
+</p>
+
+<p>
+  <b>Project type:</b>
+  <%= @technician.project_type_id %>
+</p>
+
+<p>
+  <b>Skill level:</b>
+  <%= @technician.skill_level_id %>
+</p>
+
+<p>
+  <b>Supervisor level:</b>
+  <%= @technician.supervisor_level_id %>
+</p>
+
+<p>
+  <b>Compatability notes:</b>
+  <%= @technician.compatability_notes %>
+</p>
+
+<p>
+  <b>Travel notes:</b>
+  <%= @technician.travel_notes %>
+</p>
+
+<p>
+  <b>Work capability notes:</b>
+  <%= @technician.work_capability_notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_technician_path(@technician) %> |
+<%= link_to 'Back', technicians_path %>

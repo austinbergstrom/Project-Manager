@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @zone.name %>
+</p>
+
+<p>
+  <b>Responsibility type:</b>
+  <%= @zone.responsibility_type_id %>
+</p>
+
+<p>
+  <b>Service type:</b>
+  <%= @zone.service_type_id %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @zone.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @zone.end_date %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @zone.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_zone_path(@zone) %> |
+<%= link_to 'Back', zones_path %>

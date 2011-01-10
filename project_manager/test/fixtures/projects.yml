@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  project_type_id: 1
+  start_date: 2011-01-10 12:08:43
+  end_date: 2011-01-10 12:08:43
+
+two:
+  name: MyString
+  project_type_id: 1
+  start_date: 2011-01-10 12:08:43
+  end_date: 2011-01-10 12:08:43

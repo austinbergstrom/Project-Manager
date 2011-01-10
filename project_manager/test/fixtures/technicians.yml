@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  middle_initial: MyString
+  project_type_id: 1
+  skill_level_id: 1
+  supervisor_level_id: 1
+  compatability_notes: MyText
+  travel_notes: MyText
+  work_capability_notes: MyText
+
+two:
+  first_name: MyString
+  last_name: MyString
+  middle_initial: MyString
+  project_type_id: 1
+  skill_level_id: 1
+  supervisor_level_id: 1
+  compatability_notes: MyText
+  travel_notes: MyText
+  work_capability_notes: MyText

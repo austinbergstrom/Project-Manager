@@ -1,0 +1,23 @@
+<h1>Listing supervisor_levels</h1>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @supervisor_levels.each do |supervisor_level| %>
+  <tr>
+    <td><%= supervisor_level.level %></td>
+    <td><%= link_to 'Show', supervisor_level %></td>
+    <td><%= link_to 'Edit', edit_supervisor_level_path(supervisor_level) %></td>
+    <td><%= link_to 'Destroy', supervisor_level, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Supervisor level', new_supervisor_level_path %>

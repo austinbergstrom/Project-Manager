@@ -1,0 +1,59 @@
+<%= form_for(@technician) do |f| %>
+  <% if @technician.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@technician.errors.count, "error") %> prohibited this technician from being saved:</h2>
+
+      <ul>
+      <% @technician.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_initial %><br />
+    <%= f.text_field :middle_initial %>
+  </div>
+  <div class="field">
+    <%= f.label :project_type_id %><br />
+    <%= f.select(:project_type_id, ProjectType.all.collect{|s| [s.description, s.id]},
+                 {},
+                 {})%>
+  </div>
+  <div class="field">
+    <%= f.label :skill_level_id %><br />
+    <%= f.select(:skill_level_id, SkillLevel.all.collect{|s| [s.level, s.id]},
+                 {},
+                 {})%>
+  </div>
+  <div class="field">
+    <%= f.label :supervisor_level_id %><br />
+    <%= f.select(:supervisor_level_id, SupervisorLevel.all.collect{|s| [s.level, s.id]},
+                 {:include_blank=>true},
+                 {})%>
+  </div>
+  <div class="field">
+    <%= f.label :compatability_notes %><br />
+    <%= f.text_area :compatability_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :travel_notes %><br />
+    <%= f.text_area :travel_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :work_capability_notes %><br />
+    <%= f.text_area :work_capability_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
