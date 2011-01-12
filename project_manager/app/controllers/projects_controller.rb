@@ -7,8 +7,11 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
+      format.json { render :json=>@projects.to_json}
     end
   end
+
+  #GET /projects/json_feed
 
   # GET /projects/1
   # GET /projects/1.xml

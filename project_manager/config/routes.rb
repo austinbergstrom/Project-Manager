@@ -13,6 +13,8 @@ ProjectManager::Application.routes.draw do
 
   resources :projects
 
+  get "home/json_feed"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
