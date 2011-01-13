@@ -1,6 +1,11 @@
-<h1>Editing project</h1>
+<div id="droppable-project">
+  <h1>Editing project</h1>
+  <p></p>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+  <%= link_to 'Show', @project %> |
+  <%= link_to 'Back', projects_path %>
+</div>
+
+<%= render 'available_technicians' %>

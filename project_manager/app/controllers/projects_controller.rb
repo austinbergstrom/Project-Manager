@@ -37,7 +37,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:id], :include=>:technicians)
+    @available_technicians = @project.available_technicians
+    puts @available_technicians
   end
 
   # POST /projects

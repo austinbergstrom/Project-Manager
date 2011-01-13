@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
   belongs_to :project_type
+  has_and_belongs_to_many :technicians
 
   validates_presence_of :name
   validates_presence_of :project_type_id
@@ -34,5 +35,13 @@ class Project < ActiveRecord::Base
 
   def self.format_time(time)
     return time.strftime("%Y-%m-%d")
+  end
+
+  def available_technicians
+    if !technician_ids.empty?
+      return Technician.all(:conditions=>["id NOT IN (?)", technician_ids])
+    else
+      return Technician.all
+    end
   end
 end

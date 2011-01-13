@@ -14,6 +14,18 @@ $(document).ready(function() {
       events: "/home/json_feed"
         // put your options and callbacks here
     });
+
+  $(".draggable-technician").draggable({
+    revert:true
+  });
+  $("#droppable-project").droppable({
+    drop: function( event, ui ) {
+      $( this )
+        .addClass( "ui-state-highlight" )
+        .find( "p" )
+          .html( "Dropped!" );
+    }
+  });
 });
 
 (function($) {
