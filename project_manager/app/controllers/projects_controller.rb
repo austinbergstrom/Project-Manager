@@ -39,7 +39,6 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id], :include=>:technicians)
     @available_technicians = @project.available_technicians
-    puts @available_technicians
   end
 
   # POST /projects
@@ -84,5 +83,19 @@ class ProjectsController < ApplicationController
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def remove_technician
+    @project = Project.find(params[:project_id], :include=>:technicians)
+    technician = Technician.find(params[:technician_id])
+    @project.technicians.delete(technician)
+    render :nothing=>true
+  end
+
+  def add_technician
+    @project = Project.find(params[:project_id], :include=>:technicians)
+    technician = Technician.find(params[:technician_id])
+    @project.technicians << technician
+    render :nothing=>true
   end
 end

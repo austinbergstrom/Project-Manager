@@ -11,6 +11,10 @@ ProjectManager::Application.routes.draw do
 
   resources :project_types
 
+
+  match "projects/add_technician" => "projects#add_technician"
+  match "projects/remove_technician" => "projects#remove_technician"
+
   resources :projects
 
   get "home/json_feed"

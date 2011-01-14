@@ -1,0 +1,5 @@
+<% for technician in technicians %>
+  <div id="technician_<%= technician.id.to_s %>" class="draggable-technician ui-widget-content">
+    <span><%= technician.name %></span>
+  </div>
+<% end %>

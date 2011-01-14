@@ -1,4 +1,4 @@
-<div id="droppable-project">
+<div>
   <h1>Editing project</h1>
   <p></p>
 
@@ -6,6 +6,20 @@
 
   <%= link_to 'Show', @project %> |
   <%= link_to 'Back', projects_path %>
+
+  <div id="droppable-project" project_id="<%= @project.id.to_s %>" style='width:400px;height:200px;border:1px solid black;margin:10px'>
+    <h1>Added Technicians</h1>
+    <div id='added-technicians'>
+      <%= render 'technicians', :technicians=>@project.technicians %>
+    </div>
+  </div>
 </div>
 
-<%= render 'available_technicians' %>
+<div id="droppable-technician-container" project_id="<%= @project.id.to_s %>" style='width:400px;height:200px;border:1px solid black;margin:10px'>
+  <h1>Available Technicians</h1>
+  <div id="available-technicians">
+    <%= render 'technicians', :technicians=>@available_technicians %>
+  </div>
+</div>
+<script>
+</script>
