@@ -4,6 +4,7 @@ ProjectManager::Application.routes.draw do
   resources :skill_levels
 
   get "home/index"
+  get "home/canvas"
 
   resources :technicians
 

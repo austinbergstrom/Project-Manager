@@ -2,6 +2,10 @@ class HomeController < ApplicationController
   def index
   end
 
+  def canvas
+    
+  end
+
   def json_feed
     @projects = Project.json_feed(params)
     respond_to do |format|

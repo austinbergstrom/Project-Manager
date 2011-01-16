@@ -26,11 +26,14 @@ class Project < ActiveRecord::Base
       puts class_names[index]
       json_projects << {:start=>project.start_date.to_i, :end=>project.end_date.to_i, :allDay=>false,
                         :id=>"project_#{project.id.to_s}",:title=>project.name, :url=>"/projects/#{project.id.to_s}/edit",
-                        :className=>"#{class_names[index]}", :editable=>true, :source=>''}
+                        :className=>"#{class_names[index]}", :editable=>true, :source=>'',
+                        :technicians=>project.technician_list}
     end
-
     return json_projects
+  end
 
+  def technician_list
+    technicians.collect{|t| t.name}.join(' | ')
   end
 
   def self.format_time(time)

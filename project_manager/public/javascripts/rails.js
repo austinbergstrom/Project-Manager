@@ -11,7 +11,14 @@ $(document).ready(function() {
       center:   'title',
       right:  'today,agendaDay,agendaWeek,month,prev,next'
     },
-    events: "/home/json_feed"
+    events: "/home/json_feed",
+    eventRender: function(event, element) {
+      element.append(event.technicians);
+//        element.qtip({
+//            content: event.technicians
+//        });
+    }
+
     // put your options and callbacks here
   });
   $(".draggable-technician").draggable({
