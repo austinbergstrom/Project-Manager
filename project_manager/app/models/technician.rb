@@ -12,4 +12,8 @@ class Technician < ActiveRecord::Base
   def name
     "#{last_name}, #{first_name} #{middle_initial}"
   end
+
+  def abb
+    "#{first_name[0,1]}#{last_name}"
+  end
 end

@@ -1,4 +1,80 @@
+body{
+  width:994px;
+  margin:20px auto;
+  padding:10px;
+  min-height:600px;
+  /*border:1px solid gray;*/
+  background:white;
+  /*position:absolute;*/
+  /*padding:10px;*/
+  /*margin-left:-100px;*/
+  -moz-box-shadow: 2px 2px 5px #000;
+  -webkit-box-shadow: 2px 2px 5px #000;
+  box-shadow: 2px 2px 5px #000;
+   /*For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+   /*For IE 5.5 - 7*/
+  /*filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');*/
+}
+
+ul{
+  list-style-type:none;
+  padding:0;
+}
+
+ul li{
+  display:inline;
+}
+
+table{
+  width:100%;
+}
+
+td{
+  vertical-align:top;
+}
+
+#header{
+  height:50px;
+  margin:10px 0;
+  border-bottom:1px solid #aaaaaa;
+}
+
 .draggable-technician{
   cursor:pointer;
-  width:200px;
+  margin:10px;
+}
+
+.form{
+  padding:10px;
+  width:98%;
+}
+
+.form .ui-widget-content{
+  padding:10px;
+}
+
+.form .ui-widget-header{
+  text-align:center
+}
+
+.form .ui-button{
+  padding:0 5px;
+}
+
+.one-third{
+  width:30%;
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+.technician-container {
+  height:200px;
+  overflow-y:auto;
 }
