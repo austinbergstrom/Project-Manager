@@ -5,6 +5,7 @@ ProjectManager::Application.routes.draw do
 
   get "home/index"
   get "home/canvas"
+  get "home/slider_test"
 
   resources :technicians
 

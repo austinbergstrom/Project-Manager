@@ -6,6 +6,10 @@ class HomeController < ApplicationController
     
   end
 
+  def slider_test
+    
+  end
+
   def json_feed
     @projects = Project.json_feed(params)
     respond_to do |format|

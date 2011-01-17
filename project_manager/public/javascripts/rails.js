@@ -4,7 +4,56 @@
  * Requires jQuery 1.4.3 or later.
  * https://github.com/rails/jquery-ujs
  */
+
+var current;
+
+function initializeSlider(){
+  var top = $("#slidee").position().top;
+  var width = $("#slidee").innerWidth();
+  var left = -(width/2);
+  $("#slidee").offset({top:top,left:left});
+  $("#slider").slider({
+    min:0,
+    max:100,
+    step:1,
+    value:50,
+    start:function(event, ui){
+//      alert($(this).slider( "option", "value" ));
+    },
+    slide:function(event, ui){
+      var previous = current;
+      var val = 0;
+      current = $(this).slider( "option", "value" );
+      if(current > previous){
+        val = 100;
+      } else {
+        val = -100
+      }
+      var slidee = $("#slidee");
+      var left = slidee.position().left;
+      var top = slidee.position().top;
+      slidee.offset({top:top,left:left+val});
+//      $("#slidee").offsetLeft = $("#slidee").offsetLeft + 10;
+//      $("#values").append($(this).slider( "option", "value" ));
+
+    },
+    change:function(event, ui){
+//      alert($(this).slider( "option", "value" ));
+
+    },
+    stop:function(event, ui){
+//      alert($(this).slider( "option", "value" ));
+
+    }
+  });
+}
+
 $(document).ready(function() {
+
+
+  initializeSlider();
+
+
   $('#calendar').fullCalendar({
     header:{
       left: 'prevYear, nextYear',
