@@ -9,6 +9,12 @@ $(document).ready(function() {
   initializeSlider();
   initializeCalendar();
   equalizeProjectDroppableHeight();
+  $("#headerOptions").buttonset();
+  $("#headerOptions .headerOptionButton").click(function(){
+    window.location.href=$(this).attr('href');
+  });
+  setSelectedHeaderOption();
+  
 });
 
 (function($) {
@@ -185,6 +191,18 @@ function initializeSlider(){
       }
     });
   }
+}
+
+function setSelectedHeaderOption(){
+  var path = window.location.pathname;
+  $("#headerOptions :radio").each(function(){
+    var el = $(this);
+    if(path == el.attr('href')){
+      var widget = el.button("widget");
+      widget.attr("aria-pressed", true);
+      widget.addClass("ui-state-active");
+    }
+  });
 }
 
 function equalizeProjectDroppableHeight(){

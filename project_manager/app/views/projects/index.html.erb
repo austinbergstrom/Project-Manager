@@ -1,5 +1,7 @@
-<h1>Listing projects</h1>
-
+<div class="ui-widget-content ui-corner-all form">
+  <div class="ui-widget-header ui-corner-all">
+    <h1>Listing Projects</h1>
+  </div>
 <table>
   <tr>
     <th>Name</th>
@@ -8,21 +10,21 @@
     <th>End date</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.project_type_id %></td>
-    <td><%= project.start_date %></td>
-    <td><%= project.end_date %></td>
+    <td><%= project.project_type.to_s %></td>
+    <td><%= f_date project.start_date %></td>
+    <td><%= f_date project.end_date %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+</div>
+
 
 <br />
 

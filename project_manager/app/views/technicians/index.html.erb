@@ -1,4 +1,7 @@
-<h1>Listing technicians</h1>
+<div class="ui-widget-content ui-corner-all form">
+  <div class="ui-widget-header ui-corner-all">
+    <h1>Listing Technicians</h1>
+  </div>
 
 <table>
   <tr>
@@ -6,7 +9,6 @@
     <th>Project type</th>
     <th>Skill level</th>
     <th>Supervisor level</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -19,10 +21,10 @@
     <td><%= technician.supervisor_level.to_s %></td>
     <td><%= link_to 'Show', technician %></td>
     <td><%= link_to 'Edit', edit_technician_path(technician) %></td>
-    <td><%= link_to 'Destroy', technician, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+</div>
 
 <br />
 

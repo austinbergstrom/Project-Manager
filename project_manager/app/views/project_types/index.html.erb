@@ -1,9 +1,11 @@
-<h1>Listing project_types</h1>
+<div class="ui-widget-content ui-corner-all form">
+  <div class="ui-widget-header ui-corner-all">
+    <h1>Listing Project Types</h1>
+  </div>
 
 <table>
   <tr>
     <th>Description</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -13,10 +15,10 @@
     <td><%= project_type.description %></td>
     <td><%= link_to 'Show', project_type %></td>
     <td><%= link_to 'Edit', edit_project_type_path(project_type) %></td>
-    <td><%= link_to 'Destroy', project_type, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+</div>
 
 <br />
 

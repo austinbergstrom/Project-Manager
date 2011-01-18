@@ -9,12 +9,12 @@
 <body>
 <div id="header">
 
-  <%= link_to "Home", "/", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  %>
-  <%= link_to "Projects", projects_path, :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  %>
-  <%= link_to "Technicians", technicians_path, :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" %>
-  <%= link_to "Picklists", "/home/picklists", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" %>
-  <%= link_to "Project Types", project_types_path, :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  %>
-</ul>
+  <div id="headerOptions" class="ui-buttonset">
+    <input type="radio" class="headerOptionButton" href="/" id="homeOption" name="radio" /><label for="homeOption">Home</label>
+    <input type="radio" class="headerOptionButton" href="/projects" id="projectsOption" name="radio"/><label for="projectsOption">Projects</label>
+    <input type="radio" class="headerOptionButton" href="/technicians" id="techniciansOption" name="radio" /><label for="techniciansOption">Technicians</label>
+    <input type="radio" class="headerOptionButton" href="/home/picklists" id="picklistsOption" name="radio" /><label for="picklistsOption">Data Management</label>
+  </div>
 </div>
 <div id="content">
 

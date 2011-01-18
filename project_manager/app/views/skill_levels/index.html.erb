@@ -1,23 +1,25 @@
-<h1>Listing skill_levels</h1>
+<div class="ui-widget-content ui-corner-all form">
+  <div class="ui-widget-header ui-corner-all">
+    <h1>Listing Skill Levels</h1>
+  </div>
 
-<table>
-  <tr>
-    <th>Level</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Level</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @skill_levels.each do |skill_level| %>
-  <tr>
-    <td><%= skill_level.level %></td>
-    <td><%= link_to 'Show', skill_level %></td>
-    <td><%= link_to 'Edit', edit_skill_level_path(skill_level) %></td>
-    <td><%= link_to 'Destroy', skill_level, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+    <% @skill_levels.each do |skill_level| %>
+      <tr>
+        <td><%= skill_level.level %></td>
+        <td><%= link_to 'Show', skill_level %></td>
+        <td><%= link_to 'Edit', edit_skill_level_path(skill_level) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
-<br />
+<br/>
 
 <%= link_to 'New Skill level', new_skill_level_path %>
