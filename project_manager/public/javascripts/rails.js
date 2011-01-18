@@ -231,7 +231,9 @@ function initializeCalendar(){
     events: "/home/json_feed",
     eventRender: function(event, element) {
       element.append(event.technicians);
-    }
+    },
+    theme:true,
+    timeFormat:""
   });
   $(".draggable-technician").draggable({
     revert:true,

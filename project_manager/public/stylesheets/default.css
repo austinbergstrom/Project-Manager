@@ -38,6 +38,10 @@ td{
   vertical-align:top;
 }
 
+label{
+  font-weight:bold;
+}
+
 #header{
   height:50px;
   margin:10px 0;
@@ -75,6 +79,10 @@ html .ui-button{
   width:32%;
 }
 
+.two-thirds{
+  width:65%;
+}
+
 .half{
   width:49%;
 }
@@ -93,4 +101,13 @@ html .ui-button{
   max-height:300px;
   overflow-y:auto;
   overflow-x:visible;
+}
+
+.r-margin{
+  margin-right:10px
+}
+
+form textarea{
+  width:99%;
+  height:40px;
 }

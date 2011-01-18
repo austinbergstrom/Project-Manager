@@ -39,7 +39,6 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id], :include=>:technicians)
     @available_technicians = @project.available_technicians
-    @available_technicians = @available_technicians + @available_technicians + @available_technicians + @available_technicians
   end
 
   # POST /projects

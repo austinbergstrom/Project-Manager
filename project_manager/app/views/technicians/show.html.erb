@@ -1,33 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>First name:</b>
-  <%= @technician.first_name %>
+  <b>Name:</b>
+  <%= @technician.name %>
 </p>
-
-<p>
-  <b>Last name:</b>
-  <%= @technician.last_name %>
-</p>
-
-<p>
-  <b>Middle initial:</b>
-  <%= @technician.middle_initial %>
-</p>
-
 <p>
   <b>Project type:</b>
-  <%= @technician.project_type_id %>
+  <%= @technician.project_type.to_s %>
 </p>
 
 <p>
   <b>Skill level:</b>
-  <%= @technician.skill_level_id %>
+  <%= @technician.skill_level.to_s %>
 </p>
 
 <p>
   <b>Supervisor level:</b>
-  <%= @technician.supervisor_level_id %>
+  <%= @technician.supervisor_level.to_s %>
 </p>
 
 <p>
