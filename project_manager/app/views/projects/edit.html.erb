@@ -1,37 +1,41 @@
 <div class="ui-widget-content ui-corner-all form">
   <div class="ui-widget-header ui-corner-all">
-    Editing Project
+    <h1>Editing Project</h1>
   </div>
   <br/>
-  <table>
-    <tr>
-      <td width="30%">
-        <%= render 'form' %>
 
-      </td>
-      <td width="35%">
-        <div id="droppable-project" project_id="<%= @project.id.to_s %>" class="technician-container ui-widget-content ui-corner-all">
-          <div class="ui-widget-header ui-corner-all">
-            Added Technicians
-          </div>
-          <div id='added-technicians'>
-            <%= render 'technicians', :technicians=>@project.technicians %>
-          </div>
-        </div>
-      </td>
-      <td width="35%">
-        <div id="droppable-technician-container" project_id="<%= @project.id.to_s %>" class="technician-container ui-widget-content ui-corner-all">
-          <div class="ui-widget-header ui-corner-all">
-            Available Technicians
-          </div>
-          <div id="available-technicians">
-            <%= render 'technicians', :technicians=>@available_technicians %>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </table>
-  <%= link_to 'Show', @project %> |
-  <%= link_to 'Back', projects_path %>
+  <div class="one-third left">
+    <%= render 'form' %>
+  </div>
+  <div class="one-third left" style='margin-right:10px'>
+    <div id="droppable-project" project_id="<%= @project.id.to_s %>" class="ui-widget-content ui-corner-all">
+      <div class="ui-widget-header ui-corner-all">
+        Added Technicians
+      </div>
+      <div id='added-technicians' class="technician-container">
+        <%= render 'technicians', :technicians=>@project.technicians %>
+      </div>
+    </div>
+  </div>
+  <div class="one-third left">
+    <div id="droppable-technician-container" project_id="<%= @project.id.to_s %>" class="ui-widget-content ui-corner-all">
+      <div class="ui-widget-header ui-corner-all">
+        Available Technicians
+      </div>
+      <div id="available-technicians" class='technician-container'>
+        <%= render 'technicians', :technicians=>@available_technicians %>
+      </div>
+    </div>
+  </div>
+  <div style='clear:both'></div>
+  <br/>
+  <div class="ui-widget-content ui-corner-all">
+    <div class="ui-widget-header ui-corner-all">
+      Zones
+    </div>
+  </div>
+  <div style='clear:both'></div>
 </div>
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>
 

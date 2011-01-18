@@ -10,6 +10,10 @@ class HomeController < ApplicationController
     
   end
 
+  def picklists
+    
+  end
+
   def json_feed
     @projects = Project.json_feed(params)
     respond_to do |format|

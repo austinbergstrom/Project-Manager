@@ -9,7 +9,12 @@
 <body>
 <div id="header">
 
-  <%= link_to "Home", "/" %>
+  <%= link_to "Home", "/", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  %>
+  <%= link_to "Projects", projects_path, :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  %>
+  <%= link_to "Technicians", technicians_path, :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" %>
+  <%= link_to "Picklists", "/home/picklists", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" %>
+  <%= link_to "Project Types", project_types_path, :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  %>
+</ul>
 </div>
 <div id="content">
 

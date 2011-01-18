@@ -5,101 +5,10 @@
  * https://github.com/rails/jquery-ujs
  */
 
-//var current;
-//
-//function initializeSlider(){
-//  var top = $("#slidee").position().top;
-//  var width = $("#slidee").innerWidth();
-//  var left = -(width/2);
-//  $("#slidee").offset({top:top,left:left});
-//  $("#slider").slider({
-//    min:0,
-//    max:100,
-//    step:1,
-//    value:50,
-//    start:function(event, ui){
-////      alert($(this).slider( "option", "value" ));
-//    },
-//    slide:function(event, ui){
-//      var previous = current;
-//      var val = 0;
-//      current = $(this).slider( "option", "value" );
-//      if(current > previous){
-//        val = 100;
-//      } else {
-//        val = -100
-//      }
-//      var slidee = $("#slidee");
-//      var left = slidee.position().left;
-//      var top = slidee.position().top;
-//      slidee.offset({top:top,left:left+val});
-////      $("#slidee").offsetLeft = $("#slidee").offsetLeft + 10;
-////      $("#values").append($(this).slider( "option", "value" ));
-//
-//    },
-//    change:function(event, ui){
-////      alert($(this).slider( "option", "value" ));
-//
-//    },
-//    stop:function(event, ui){
-////      alert($(this).slider( "option", "value" ));
-//
-//    }
-//  });
-//}
-
 $(document).ready(function() {
-
-
-//  initializeSlider();
-
-
-  $('#calendar').fullCalendar({
-    header:{
-      left: 'prevYear, nextYear',
-      center:   'title',
-      right:  'today,agendaDay,agendaWeek,month,prev,next'
-    },
-    events: "/home/json_feed",
-    eventRender: function(event, element) {
-      element.append(event.technicians);
-//        element.qtip({
-//            content: event.technicians
-//        });
-    }
-
-    // put your options and callbacks here
-  });
-  $(".draggable-technician").draggable({
-    revert:true,
-    revertDuration:0
-  });
-  $("#droppable-project").droppable({
-    drop: function(event, ui) {
-      var technician_id = ui.draggable.attr('id').split('_')[1];
-      var project_id = $(this).attr('project_id');
-      $(this)
-          .find("#added-technicians")
-          .append(ui.draggable);
-      $.get("/projects/add_technician", {
-        project_id:project_id,
-        technician_id:technician_id
-      });
-    }
-  });
-  $("#droppable-technician-container").droppable({
-    drop: function(event, ui) {
-      var technician_id = ui.draggable.attr('id').split('_')[1];
-      var project_id = $(this).attr('project_id');
-      $(this)
-          .find("#available-technicians")
-          .append(ui.draggable);
-      $.get("/projects/remove_technician", {
-        project_id:project_id,
-        technician_id:technician_id
-      });
-    }
-  });
+  initializeSlider();
+  initializeCalendar();
+  equalizeProjectDroppableHeight();
 });
 
 (function($) {
@@ -232,3 +141,111 @@ $(document).ready(function() {
     if (this == event.target) enableFormElements($(this));
   });
 })(jQuery);
+
+var current;
+
+function initializeSlider(){
+  if(document.getElementById('slidee') != null){
+    var top = $("#slidee").position().top;
+    var width = $("#slidee").innerWidth();
+    var left = -(width/2);
+    $("#slidee").offset({top:top,left:left});
+    $("#slider").slider({
+      min:0,
+      max:100,
+      step:1,
+      value:50,
+      start:function(event, ui){
+  //      alert($(this).slider( "option", "value" ));
+      },
+      slide:function(event, ui){
+        var previous = current;
+        var val = 0;
+        current = $(this).slider( "option", "value" );
+        if(current > previous){
+          val = -100;
+        } else {
+          val = 100
+        }
+        var slidee = $("#slidee");
+        var left = slidee.position().left;
+        var top = slidee.position().top;
+        slidee.offset({top:top,left:left+val});
+  //      $("#slidee").offsetLeft = $("#slidee").offsetLeft + 10;
+  //      $("#values").append($(this).slider( "option", "value" ));
+
+      },
+      change:function(event, ui){
+  //      alert($(this).slider( "option", "value" ));
+
+      },
+      stop:function(event, ui){
+  //      alert($(this).slider( "option", "value" ));
+
+      }
+    });
+  }
+}
+
+function equalizeProjectDroppableHeight(){
+  var proj = document.getElementById('droppable-project');
+  var tech = document.getElementById('droppable-technician-container');
+  if(proj && tech){
+    var techH = tech.offsetHeight;
+    var projH = proj.offsetHeight;
+    if(techH > projH){
+      proj.style.height = (techH)+"px";
+      tech.style.height = (techH)+"px";
+    } else {
+      tech.style.height = (projH)+"px";
+      proj.style.height = (projH)+"px";
+    }
+  }
+}
+
+function initializeCalendar(){
+  $('#calendar').fullCalendar({
+    header:{
+      left: 'prevYear, nextYear',
+      center:   'title',
+      right:  'today,agendaDay,agendaWeek,month,prev,next'
+    },
+    events: "/home/json_feed",
+    eventRender: function(event, element) {
+      element.append(event.technicians);
+    }
+  });
+  $(".draggable-technician").draggable({
+    revert:true,
+    revertDuration:0,
+    scroll:true,
+    helper: 'clone'
+  });
+  $("#droppable-project").droppable({
+    drop: function(event, ui) {
+      var technician_id = ui.draggable.attr('id').split('_')[1];
+      var project_id = $(this).attr('project_id');
+      $(this)
+          .find("#added-technicians")
+          .append(ui.draggable);
+      $.get("/projects/add_technician", {
+        project_id:project_id,
+        technician_id:technician_id
+      });
+    }
+  });
+  $("#droppable-technician-container").droppable({
+    drop: function(event, ui) {
+      var technician_id = ui.draggable.attr('id').split('_')[1];
+      var project_id = $(this).attr('project_id');
+      $(this)
+          .find("#available-technicians")
+          .append(ui.draggable);
+      $.get("/projects/remove_technician", {
+        project_id:project_id,
+        technician_id:technician_id
+      });
+    }
+  });
+
+}

@@ -2,9 +2,9 @@ body{
   width:994px;
   margin:20px auto;
   padding:10px;
-  min-height:600px;
+  min-height:680px;
   /*border:1px solid gray;*/
-  background:white;
+  /*background:white;*/
   /*position:absolute;*/
   /*padding:10px;*/
   /*margin-left:-100px;*/
@@ -15,6 +15,10 @@ body{
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
    /*For IE 5.5 - 7*/
   /*filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');*/
+}
+
+html .ui-button{
+  padding:0 5px;
 }
 
 ul{
@@ -40,30 +44,39 @@ td{
   border-bottom:1px solid #aaaaaa;
 }
 
-.draggable-technician{
-  cursor:pointer;
-  margin:10px;
-}
-
 .form{
   padding:10px;
   width:98%;
 }
 
+html .ui-button{
+  padding:0 5px;
+}
+
 .form .ui-widget-content{
-  padding:10px;
+  padding:5px;
 }
 
 .form .ui-widget-header{
   text-align:center
 }
 
-.form .ui-button{
-  padding:0 5px;
+.form table td{
+  overflow-x:hidden;
+}
+
+.draggable-technician{
+  cursor:pointer;
+  margin:5px;
+  padding:5px;
 }
 
 .one-third{
-  width:30%;
+  width:32%;
+}
+
+.half{
+  width:49%;
 }
 
 .left{
@@ -75,6 +88,9 @@ td{
 }
 
 .technician-container {
-  height:200px;
+  height:100%;
+  min-height:200px;
+  max-height:300px;
   overflow-y:auto;
+  overflow-x:visible;
 }
