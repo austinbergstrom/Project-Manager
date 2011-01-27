@@ -1,0 +1,15 @@
+<div class="zone-line-item ui-widget-content ui-corner-all" id="zone_<%= zone.id.to_s %>_container">
+  <div id="zone_<%= zone.id.to_s %>">
+    <% if @new %>
+      <%= render '/zones/line_item_form', :zone=>zone %>
+    <% else %>
+      <%= render '/zones/readonly_line_item', :zone=>zone %>
+    <% end %>
+  </div>
+  <div class='assignedTechnicians'>
+    <% for tech in zone.technicians %>
+      <%= tech.name %>
+    <% end %>
+  </div>
+  <div style='clear:both'></div>
+</div>

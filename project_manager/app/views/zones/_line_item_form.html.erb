@@ -1,0 +1,25 @@
+<%= form_for(zone, :remote=>true) do |f| %>
+<div class="field left" style='margin-right:10px;'>
+  <%= f.label(:name) %>
+  <%= f.text_field(:name, :style=>"width:75px") %>
+</div>
+<div class="field left">
+  <%= f.label(:zone_level_id, "Level") %>
+  <%= f.select(:zone_level_id, ZoneLevel.all.collect{|s| [s.level, s.id]},
+               {:include_blank=>true}) %>
+</div>
+<div style='clear:both'></div>
+<div class="field">
+  <%= f.label(:start_date, "Start") %>
+  <%= f.date_select(:start_date) %>
+</div>
+<div class="field">
+  <%= f.label(:end_date, "End") %>
+  <%= f.date_select(:end_date) %>
+</div>
+<button class="right ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button">Save</button>
+<% end %>
+<a data-remote=true data-method='delete' href="/zones/<%= zone.id.to_s %>" class="left ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button">
+  Remove
+</a>
+<div style='clear:both'></div>

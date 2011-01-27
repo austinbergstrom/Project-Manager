@@ -96,9 +96,7 @@ html .ui-button{
 }
 
 .technician-container {
-  height:100%;
-  min-height:200px;
-  max-height:300px;
+  height:450px;
   overflow-y:auto;
   overflow-x:visible;
 }
@@ -110,4 +108,20 @@ html .ui-button{
 form textarea{
   width:99%;
   height:40px;
+}
+
+.icon{
+  cursor:pointer;
+}
+
+.zone-line-item{
+  margin:5px 0 0 0;
+}
+
+.field input[type='text']{
+  width:150px;
+}
+
+.inline{
+  display:inline;
 }

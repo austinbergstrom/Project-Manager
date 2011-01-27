@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Number:</b>
+  <%= @travel_restriction.number %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @travel_restriction.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_travel_restriction_path(@travel_restriction) %> |
+<%= link_to 'Back', travel_restrictions_path %>

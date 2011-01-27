@@ -1,0 +1,29 @@
+<div class="ui-widget-content ui-corner-all form">
+  <div class="ui-widget-header ui-corner-all">
+    <h1>Listing Project Colors</h1>
+  </div>
+
+<table>
+  <tr>
+    <th>Background</th>
+    <th>Text</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_colors.each do |project_color| %>
+  <tr>
+    <td><%= project_color.background %></td>
+    <td><%= project_color.text %></td>
+    <td><%= project_color.name %></td>
+    <td><%= link_to 'Show', project_color %></td>
+    <td><%= link_to 'Edit', edit_project_color_path(project_color) %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>
+<br />
+
+<%= link_to 'New Project color', new_project_color_path %>

@@ -1,4 +1,16 @@
 ProjectManager::Application.routes.draw do
+  resources :project_colors
+
+  resources :zone_levels
+
+  resources :machines
+
+  resources :project_scopes
+
+  resources :travel_restrictions
+
+  resources :restrictions
+
   resources :supervisor_levels
 
   resources :skill_levels
@@ -8,6 +20,8 @@ ProjectManager::Application.routes.draw do
   get "home/slider_test"
 
   resources :technicians
+
+  match "zones/add" => "zones#add"
 
   resources :zones
 

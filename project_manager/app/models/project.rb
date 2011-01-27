@@ -1,7 +1,10 @@
 class Project < ActiveRecord::Base
 
   belongs_to :project_type
+  belongs_to :project_color
   has_and_belongs_to_many :technicians
+  has_and_belongs_to_many :project_scopes
+  has_many :zones
 
   validates_presence_of :name
   validates_presence_of :project_type_id
@@ -47,4 +50,19 @@ class Project < ActiveRecord::Base
       return Technician.all
     end
   end
+
+  def background_color
+    if project_color
+      return project_color.background
+    end
+    return "lightgray"
+  end
+
+  def text_color
+    if project_color
+      return project_color.text
+    end
+    return "black"
+  end
+  
 end

@@ -1,0 +1,21 @@
+<h1>Listing project_scopes</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_scopes.each do |project_scope| %>
+  <tr>
+    <td><%= project_scope.description %></td>
+    <td><%= link_to 'Show', project_scope %></td>
+    <td><%= link_to 'Edit', edit_project_scope_path(project_scope) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project scope', new_project_scope_path %>

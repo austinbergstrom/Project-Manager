@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
+        format.html { redirect_to("/projects/#{@project.id.to_s}/edit", :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
@@ -95,7 +95,8 @@ class ProjectsController < ApplicationController
   def add_technician
     @project = Project.find(params[:project_id], :include=>:technicians)
     technician = Technician.find(params[:technician_id])
-    @project.technicians << technician
+    @project.technicians << technician unless @project.technicians.include?(technician)
     render :nothing=>true
   end
+
 end

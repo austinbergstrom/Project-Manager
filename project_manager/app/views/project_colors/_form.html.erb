@@ -1,0 +1,38 @@
+<%= form_for(@project_color) do |f| %>
+  <% if @project_color.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_color.errors.count, "error") %> prohibited this project_color from being saved:</h2>
+
+      <ul>
+      <% @project_color.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :background %><br />
+    <%= f.text_field :background %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+  $("#project_color_background").ColorPicker({
+
+  });
+
+  $("#project_color_text").ColorPicker({
+
+  });
+</script>

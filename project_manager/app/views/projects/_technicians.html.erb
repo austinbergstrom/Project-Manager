@@ -1,5 +1,5 @@
 <% for technician in technicians %>
-  <div id="technician_<%= technician.id.to_s %>" class="draggable-technician ui-widget-content ui-corner-all">
+  <div id="technician_<%= technician.id.to_s %>" added="<%= added %>" class="draggable-technician ui-widget-content ui-corner-all">
     <%= technician.abb %>
   </div>
 <% end %>

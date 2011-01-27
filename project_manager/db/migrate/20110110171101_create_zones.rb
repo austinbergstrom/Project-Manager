@@ -6,7 +6,8 @@ class CreateZones < ActiveRecord::Migration
       t.integer :service_type_id
       t.datetime :start_date
       t.datetime :end_date
-      t.integer :level
+      t.integer :zone_level_id
+      t.integer :project_id
 
       t.timestamps
     end

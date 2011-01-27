@@ -25,22 +25,64 @@
       <%= f.text_field :middle_initial %>
     </div>
     <div class="field">
-      <%= f.label :project_type_id %><br />
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :project_type_id %>
       <%= f.select(:project_type_id, ProjectType.all.collect{|s| [s.description, s.id]},
-                   {},
+                   {:include_blank=>true},
                    {})%>
     </div>
     <div class="field">
-      <%= f.label :skill_level_id %><br />
+      <%= f.label :skill_level_id %>
       <%= f.select(:skill_level_id, SkillLevel.all.collect{|s| [s.level, s.id]},
-                   {},
+                   {:include_blank=>true},
                    {})%>
     </div>
     <div class="field">
-      <%= f.label :supervisor_level_id %><br />
+      <%= f.label :supervisor_level_id %>
       <%= f.select(:supervisor_level_id, SupervisorLevel.all.collect{|s| [s.level, s.id]},
                    {:include_blank=>true},
                    {})%>
+    </div>
+    <div class="field">
+      <%= f.label :restriction_id %>
+      <%= f.select(:restriction_id, Restriction.all.collect{|s| [s.value, s.id]},
+                   {:include_blank=>true},
+                   {})%>
+    </div>
+    <div class="field">
+      <%= f.label :lp_experience %>
+      <%= f.check_box(:lp_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :hp_experience %>
+      <%= f.check_box(:hp_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :generator_experience %>
+      <%= f.check_box(:generator_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :rotor_experience %>
+      <%= f.check_box(:rotor_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :rewind_experience %>
+      <%= f.check_box(:rewind_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :mat_experience %>
+      <%= f.check_box(:mat_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :bwr_experience %>
+      <%= f.check_box(:bwr_experience)%>
+    </div>
+    <div class="field">
+      <%= f.label :rca_experience %>
+      <%= f.check_box(:rca_experience)%>
     </div>
     <div class="actions">
       <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button">Save</button>

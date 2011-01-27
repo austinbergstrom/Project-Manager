@@ -3,16 +3,31 @@
     <h1>Editing Project</h1>
   </div>
   <br/>
-  <div class="one-third left">
+  <div class="left" style='width:33%'>
     <%= render 'form' %>
+    <div style='clear:both'></div>
+    <div class="ui-widget-content ui-corner-all">
+      <div class="ui-widget-header ui-corner-all">
+        Zones
+        <a data-remote=true href="/zones/add?id=<%= @project.id.to_s %>">
+          <span title="Add Zone" class="icon ui-icon ui-icon-plus right">
+          </span>
+        </a>
+      </div>
+      <div id="zoneList">
+        <% for zone in @project.zones %>
+          <%= render(:partial=>"/zones/zone_line_item", :locals=>{:zone=>zone}) %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="one-third left" style='margin-right:10px'>
+  <div class="one-third left" style='margin:0 10px 0 10px'>
     <div id="droppable-project" project_id="<%= @project.id.to_s %>" class="ui-widget-content ui-corner-all">
       <div class="ui-widget-header ui-corner-all">
         Added Technicians
       </div>
       <div id='added-technicians' class="technician-container">
-        <%= render 'technicians', :technicians=>@project.technicians %>
+        <%= render 'technicians', :technicians=>@project.technicians, :added=>true %>
       </div>
     </div>
   </div>
@@ -22,17 +37,11 @@
         Available Technicians
       </div>
       <div id="available-technicians" class='technician-container'>
-        <%= render 'technicians', :technicians=>@available_technicians %>
+        <%= render 'technicians', :technicians=>@available_technicians, :added=>false %>
       </div>
     </div>
   </div>
-  <div style='clear:both'></div>
   <br/>
-  <div class="ui-widget-content ui-corner-all">
-    <div class="ui-widget-header ui-corner-all">
-      Zones
-    </div>
-  </div>
   <div style='clear:both'></div>
 </div>
 <%= link_to 'Show', @project %> |

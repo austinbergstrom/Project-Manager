@@ -1,0 +1,25 @@
+<%= form_for(@travel_restriction) do |f| %>
+  <% if @travel_restriction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@travel_restriction.errors.count, "error") %> prohibited this travel_restriction from being saved:</h2>
+
+      <ul>
+      <% @travel_restriction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,20 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="field left" style='margin-right:10px'>
+    <%= f.label :name %><br/>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :project_type_id %><br />
+  <div class="field left">
+    <%= f.label :project_type_id %><br/>
     <%= f.select(:project_type_id, ProjectType.all.collect{|p| [p.description, p.id]})%>
   </div>
+  <div style='clear:both'></div>
+  <div class="field left" style='margin-right:10px;'>
+    <%= f.label :project_color_id %><br/>
+    <%= f.select(:project_color_id, ProjectColor.all.collect{|p| [p.name, [p.id,p.background,p.text].join(':')]},
+                 {},
+                 {:onchange=>"updateColorExample(this)"}) %>
+  </div>
+  <div class="field left">
+    <br/>
+    <div id="projectColorExample" style="<%= "background:#{@project.background_color};color:#{@project.text_color}" %>;padding:5px">
+      <strong>Example</strong>
+    </div>
+  </div>
+  <div style='clear:both'></div>
   <div class="field">
-    <%= f.label :start_date %><br />
+    <%= f.label :start_date, "Start" %>
     <%= f.date_select :start_date %>
   </div>
   <div class="field">
-    <%= f.label :end_date %><br />
+    <%= f.label :end_date, "End" %>
     <%= f.date_select :end_date %>
   </div>
   <div class="actions">

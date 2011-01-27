@@ -1,0 +1,21 @@
+<h1>Listing zone_levels</h1>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @zone_levels.each do |zone_level| %>
+  <tr>
+    <td><%= zone_level.level %></td>
+    <td><%= link_to 'Show', zone_level %></td>
+    <td><%= link_to 'Edit', edit_zone_level_path(zone_level) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Zone level', new_zone_level_path %>
