@@ -14,23 +14,21 @@ class Project < ActiveRecord::Base
     start_date = format_time Time.at(params[:start].to_i)
     end_date = format_time Time.at(params[:end].to_i)
 
-    projects = Project.all(:conditions=>["start_date BETWEEN ? AND ?", start_date, end_date])
+    projects = Project.all(:conditions=>["start_date BETWEEN ? AND ?", start_date, end_date], :include=>:project_color)
 
     json_projects = []
 
-    class_names = ["fc-event1", "fc-event2", "fc-event3"]
-    index = -1
-
     for project in projects
-      index += 1
-      if index > class_names.length
-        index = 0
+      if project.project_color
+        bg_color = project.project_color.background
+        color = project.project_color.text
+      else
+        bg_color = "black"
+        color = "white"
       end
-      puts class_names[index]
       json_projects << {:start=>project.start_date.to_i, :end=>project.end_date.to_i, :allDay=>false,
                         :id=>"project_#{project.id.to_s}",:title=>project.name, :url=>"/projects/#{project.id.to_s}/edit",
-                        :className=>"#{class_names[index]}", :editable=>true, :source=>'',
-                        :technicians=>project.technician_list}
+                        :editable=>true, :source=>'', :technicians=>project.technician_list, :background_color=>bg_color, :color=>color}
     end
     return json_projects
   end
@@ -63,6 +61,17 @@ class Project < ActiveRecord::Base
       return project_color.text
     end
     return "black"
+  end
+
+  def update_from_drop(params)
+    delta = params[:day_delta].to_i
+    update_attributes(:start_date=>start_date+delta.days,
+                      :end_date=>end_date+delta.days)
+  end
+
+  def update_from_resize(params)
+    delta = params[:day_delta].to_i
+    update_attribute(:end_date, end_date+delta.days)
   end
   
 end

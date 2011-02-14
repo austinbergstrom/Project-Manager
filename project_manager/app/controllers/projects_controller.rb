@@ -99,4 +99,26 @@ class ProjectsController < ApplicationController
     render :nothing=>true
   end
 
+  def event_drop
+    project = Project.find_by_id(params[:id])
+    if project
+      project.update_from_drop(params)
+      status = 200
+    else
+      status = 500
+    end
+    render :nothing=>true, :status=>status
+  end
+
+  def event_resize
+    project = Project.find_by_id(params[:id])
+    if project
+      project.update_from_resize(params)
+      status = 200
+    else
+      status = 500
+    end
+    render :nothing=>true, :status=>status
+  end
+
 end

@@ -113,4 +113,36 @@ class ZonesController < ApplicationController
       end
     end
   end
+
+  def add_technician
+    zone = Zone.find_by_id(params[:zone_id], :include=>[:technicians,{:project=>:technicians}])
+    technician = Technician.find_by_id(params[:technician_id])
+    if zone && technician
+      if !zone.project.technicians.collect{|t|t.id}.include?(technician.id)
+        zone.project.technicians << technician
+        zone.project.save
+      end
+      if !zone.technicians.collect{|t|t.id}.include?(technician.id)
+        zone.technicians << technician
+        zone.save
+      end
+      status = 200
+    else
+      status = 500
+    end
+    render :nothing=>true, :status=>status
+  end
+
+  def remove_technician
+    zone = Zone.find_by_id(params[:zone_id], :include=>:technicians)
+    technician = zone.technicians.detect{|t| t.id.to_s == params[:technician_id.to_s]}
+    if zone && technician
+      sql = "DELETE FROM `technicians_zones` WHERE (`technicians_zones`.`zone_id` = #{zone.id.to_s} and `technician_id` = #{technician.id.to_s})" 
+      ActiveRecord::Base.connection.execute(sql)
+      status = 200
+    else
+      status = 500
+    end
+    render :nothing=>true, :status=>status
+  end
 end

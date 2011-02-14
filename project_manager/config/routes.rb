@@ -22,6 +22,8 @@ ProjectManager::Application.routes.draw do
   resources :technicians
 
   match "zones/add" => "zones#add"
+  match "zones/add_technician" => "zones#add_technician"
+  match "zones/remove_technician" => "zones#remove_technician"
 
   resources :zones
 
@@ -30,6 +32,8 @@ ProjectManager::Application.routes.draw do
 
   match "projects/add_technician" => "projects#add_technician"
   match "projects/remove_technician" => "projects#remove_technician"
+  match "projects/event_drop" => "projects#event_drop"
+  match "projects/event_resize" => "projects#event_resize"
 
   resources :projects
 

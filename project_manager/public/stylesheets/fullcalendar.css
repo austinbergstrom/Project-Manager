@@ -243,10 +243,10 @@ table.fc-header {
 .fc-event,
 .fc-agenda .fc-event-time,
 .fc-event a {
-	border-style: solid; 
+	/*border-style: solid; */
 	/*border-color: #36c;     *//* default BORDER color (probably the same as background-color) */
 	/*background-color: #36c; *//* default BACKGROUND color */
-	color: #fff;            /* default TEXT color */
+	/*color: #fff;            *//* default TEXT color */
 	}
 	
 	/* Use the 'className' CalEvent property and the following
@@ -279,6 +279,7 @@ table.fc-header {
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
+  font-weight:bold;
 	}
 	
 /* for fake rounded corners */
@@ -582,27 +583,5 @@ table.fc-header {
 	text-align: center;
 	cursor: s-resize;
 	}
-
-
-.fc-event1,
-.fc-agenda .fc-event1,
-.fc-event1 .fc-event a {
-  background-color: yellow; /* background color */
-  border-color: yellow;     /* border color */
-}
-
-.fc-event2,
-.fc-agenda .fc-event2,
-.fc-event2 .fc-event a {
-  background-color: green; /* background color */
-  border-color: green;     /* border color */
-}
-
-.fc-event3,
-.fc-agenda .fc-event3 ,
-.fc-event3 .fc-event a {
-  background-color: blue; /* background color */
-  border-color: blue;     /* border color */
-}
 	
 

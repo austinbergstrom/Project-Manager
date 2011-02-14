@@ -8,7 +8,9 @@
   </div>
   <div class='assignedTechnicians'>
     <% for tech in zone.technicians %>
-      <%= tech.name %>
+      <span style="cursor:pointer" id="zone_<%= zone.id.to_s %>_tech_<%= tech.id.to_s %>">
+        <%= tech.abb %> |
+      </span>
     <% end %>
   </div>
   <div style='clear:both'></div>

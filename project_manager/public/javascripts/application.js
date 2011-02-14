@@ -87,9 +87,41 @@ function initializeCalendar(){
     },
     events: "/home/json_feed",
     eventRender: function(event, element) {
+      element[0].style.backgroundColor = event.background_color;
+      element[0].style.color = event.color;
+      element[0].getElementsByTagName("A")[0].style.color = event.color;
       element.append(event.technicians);
     },
-    timeFormat:""
+    timeFormat:"",
+    eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
+      var url = "/projects/event_drop";
+      var id = event.id.split('_')[1];
+      var data = {day_delta:dayDelta,id:id};
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: data,
+        error: function(){
+          revertFunc();
+        }
+      });
+//      alert("Event Dropped: "+event+" \nDay Delta: "+dayDelta+" \nMinute Delta: "+minuteDelta+" \nAll Day: "+allDay+" \nRevert Func: "+revertFunc+" \nJS Event: "+jsEvent+" \n UI: "+ui+" \nView: "+view);
+
+    },
+    eventResize: function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view){
+      var url = "/projects/event_resize";
+      var id = event.id.split('_')[1];
+      var data = {day_delta:dayDelta,id:id};
+      $.ajax({
+        type: 'POST',
+        url:url,
+        data:data,
+        error:function(){
+          revertFunc();
+        }
+      });
+//      alert("Event Resized: "+event+" \nDay Delta: "+dayDelta+" \nMinute Delta: "+minuteDelta+" \nRevert Func: "+revertFunc+" \nJS Event: "+jsEvent+" \n UI: "+ui+" \nView: "+view);
+    }
   });
   $(".draggable-technician").draggable({
     revert:true,
@@ -137,7 +169,7 @@ function initializeZoneDroppables(){
     drop: function(event, ui) {
       var zone_id = $(this).attr('id').split('_')[1];
       var technician_id = ui.draggable.attr('id').split('_')[1];
-      var span_id = 'zone_'+zone_id+'_tech_X'+technician_id;
+      var span_id = 'zone_'+zone_id+'_tech_'+technician_id;
       if(!document.getElementById(span_id)){
         var project_id = $(this).attr('project_id');
         var span = document.createElement("span");
@@ -146,6 +178,10 @@ function initializeZoneDroppables(){
         span.setAttribute('technician_id', technician_id);
         span.setAttribute('id', span_id);
         span.innerHTML = document.getElementById(ui.draggable.attr('id')).innerHTML + " | ";
+        span.style.cursor = "pointer";
+        $(span).click(function(){
+          removeZoneTechnician(span, technician_id, zone_id);
+        });
         $(this)
             .find(".assignedTechnicians")
             .append(span);
@@ -154,6 +190,32 @@ function initializeZoneDroppables(){
           technician_draggable.attr('added', 'true');
         }
       }
+      var url = "/zones/add_technician";
+      var data = {technician_id:technician_id,zone_id:zone_id};
+      $.ajax({
+        type:"POST",
+        url:url,
+        data:data
+      });
+    }
+  });
+  $(".assignedTechnicians span").click(function(){
+    var parts = $(this).attr("id").split('_');
+    var zone_id = parts[1];
+    var technician_id = parts[3];
+    removeZoneTechnician($(this)[0], technician_id, zone_id);
+  });
+}
+
+function removeZoneTechnician(span, technician_id, zone_id){
+  var url = "/zones/remove_technician";
+  var data = {technician_id:technician_id, zone_id:zone_id};
+  $.ajax({
+    type:"DELETE",
+    url:url,
+    data:data,
+    success: function(){
+      span.parentNode.removeChild(span);
     }
   });
 }
