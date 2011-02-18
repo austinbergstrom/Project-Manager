@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
     start_date = format_time Time.at(params[:start].to_i)
     end_date = format_time Time.at(params[:end].to_i)
 
-    projects = Project.all(:conditions=>["start_date BETWEEN ? AND ?", start_date, end_date], :include=>:project_color)
+    projects = Project.all(:conditions=>["start_date BETWEEN :start AND :end OR end_date BETWEEN :start AND :end", {:start=>start_date, :end=>end_date}], :include=>:project_color)
 
     json_projects = []
 
@@ -53,14 +53,14 @@ class Project < ActiveRecord::Base
     if project_color
       return project_color.background
     end
-    return "lightgray"
+    return "black"
   end
 
   def text_color
     if project_color
       return project_color.text
     end
-    return "black"
+    return "white"
   end
 
   def update_from_drop(params)
@@ -72,6 +72,15 @@ class Project < ActiveRecord::Base
   def update_from_resize(params)
     delta = params[:day_delta].to_i
     update_attribute(:end_date, end_date+delta.days)
+  end
+
+  def selected_project_color
+    if project_color
+      pc = "#{project_color_id}:#{project_color.background.upcase}:#{project_color.text.upcase}"
+    else
+      pc = ""
+    end
+    return pc
   end
   
 end

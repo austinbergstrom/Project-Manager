@@ -22,9 +22,9 @@
   <div style='clear:both'></div>
   <div class="field left" style='margin-right:10px;'>
     <%= f.label :project_color_id %><br/>
-    <%= f.select(:project_color_id, ProjectColor.all.collect{|p| [p.name, [p.id,p.background,p.text].join(':')]},
-                 {},
-                 {:onchange=>"updateColorExample(this)"}) %>
+    <%= select("Project", "project_color_id", ProjectColor.all.collect{|p| [p.name, [p.id,p.background.upcase,p.text.upcase].join(':')]},
+                 {:include_blank=>true, :selected=>@project.selected_project_color},
+                 {:onchange=>"updateColorExample(this)", :selected=>@project.selected_project_color}) %>
   </div>
   <div class="field left">
     <br/>

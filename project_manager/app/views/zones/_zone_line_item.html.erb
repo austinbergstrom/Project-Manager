@@ -8,9 +8,12 @@
   </div>
   <div class='assignedTechnicians'>
     <% for tech in zone.technicians %>
-      <span style="cursor:pointer" id="zone_<%= zone.id.to_s %>_tech_<%= tech.id.to_s %>">
-        <%= tech.abb %> |
-      </span>
+      <!--<div class="ui-widget-content ui-corner-all">-->
+        <span class="left" id="zone_<%= zone.id.to_s %>_tech_<%= tech.id.to_s %>">
+          <span class="left"><%= tech.abb %></span>
+          <span style="cursor:pointer;margin-top:2px;" class="ui-icon ui-icon-circle-close left"></span>
+        </span>
+      <!--</div>-->
     <% end %>
   </div>
   <div style='clear:both'></div>

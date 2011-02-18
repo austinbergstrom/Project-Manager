@@ -1,8 +1,8 @@
 function updateColorExample(select){
   var values = select.value.split(":");
   var div = document.getElementById('projectColorExample');
-  div.style.color = values[2];
-  div.style.backgroundColor = values[1];
+  div.style.color = values[2] || "white";
+  div.style.backgroundColor = values[1] || "black";
 }
 
 var current;

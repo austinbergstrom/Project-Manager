@@ -1,14 +1,4 @@
 class ZonesController < ApplicationController
-  # GET /zones
-  # GET /zones.xml
-  def index
-    @zones = Zone.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @zones }
-    end
-  end
 
   def add
     @new = true
@@ -23,33 +13,10 @@ class ZonesController < ApplicationController
     end
   end
 
-  # GET /zones/1
-  # GET /zones/1.xml
-  def show
-    @zone = Zone.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @zone }
-    end
-  end
-
-  # GET /zones/new
-  # GET /zones/new.xml
-  def new
-    @zone = Zone.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @zone }
-    end
-  end
-
   # GET /zones/1/edit
   def edit
     @zone = Zone.find(params[:id])
     respond_to do |f|
-      f.html
       f.js do
         render :update do |page|
           html = render(:partial=>"/zones/line_item_form", :locals=>{:zone=>@zone})
